@@ -27,28 +27,15 @@
 
   <h1>Add New Food</h1>
 
-  <form id="foodForm">
-
-    <input type="text" id="title" placeholder="Food Title" required>
-
-    <input type="text" id="image" placeholder="Image URL (e.g images/jollof.jpg)" required>
-
-    <textarea id="description" placeholder="Description" required></textarea>
-
-    <!-- INGREDIENTS -->
-    <h3>Ingredients</h3>
-    <div id="ingredientsContainer"></div>
-    <button type="button" id="addIngredient">+ Add Ingredient</button>
-
-    <!-- INSTRUCTIONS -->
-    <h3>Instructions</h3>
-    <div id="instructionsContainer"></div>
-    <button type="button" id="addInstruction">+ Add Instruction</button>
-
-    <br><br>
-    <button type="submit">Save Food</button>
-
-  </form>
+  <form id="adminForm">
+  <input id="foodId" placeholder="Food ID (e.g. jollof-rice)" required>
+  <input id="foodTitle" placeholder="Title" required>
+  <input id="foodImage" placeholder="Image path" required>
+  <textarea id="foodDescription" placeholder="Description" required></textarea>
+  <textarea id="foodIngredients" placeholder="Ingredients (comma separated)" required></textarea>
+  <textarea id="foodInstructions" placeholder="Instructions (period separated)" required></textarea>
+  <button type="submit">Add Food</button>
+</form>
 
 
 
@@ -103,5 +90,9 @@
             <p>&copy; 2024 Famous Blog. All rights reserved.</p>
         </footer>
     
+    <script src="https://cdn.jsdelivr.net/npm/pocketbase/dist/pocketbase.umd.js"></script>
+<script src="admin.js"></script>
+   
+
 </body>
 </html>
