@@ -1,0 +1,26 @@
+body {
+  padding: 20px;
+  font-family: Arial;
+}
+
+input, textarea {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+button {
+  margin: 5px 0;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.group {
+  display: flex;
+  gap: 10px;
+}
+
+.group input {
+  flex: 1;
+}
