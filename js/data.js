@@ -20,6 +20,7 @@ const foods = [
       "1 tsp curry powder",
       "Salt and pepper"
     ],
+    //2 cups of long-grain rice,1 can of diced tomatoes,"1 onion, chopped,2 cloves of garlic,1 bell pepper,1 tsp thyme,1 tsp curry powder,Salt and pepper
     instructions: [
       "Rinse the rice until water runs clear.",
       "Sauté onions, garlic, and pepper.",

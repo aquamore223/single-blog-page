@@ -1,3 +1,4 @@
+/* Reset & Base */
 *{
     margin: 0;
     padding: 0;
@@ -14,6 +15,8 @@ body {
     --secondary-color: #f4f4f4;
     --accent-color: #ff6347;
 }
+
+/* Header */
 header {
     color: var(--primary-color);
     padding: 20px;
@@ -27,7 +30,6 @@ header {
     z-index: 1000;
     background-color: #f4f4f4;
 }
-
 header h5 {
     font-size: 23px;
     font-weight: bold;
@@ -67,6 +69,7 @@ nav ul li a:hover {
     border-radius: 4px;
 }
 
+/* Hero Section */
 .hero-section {
     background-image: url('../images/hero.jpg');
     background-size: cover;
@@ -86,12 +89,10 @@ nav ul li a:hover {
     font-size: 40px;
     margin-bottom: 20px;
     text-transform: capitalize;
-   
 }
 .hero-section h1 span {
     color: var(--accent-color);
     display: block;
-    
 }
 .hero-section p {
     font-size: 18px;
@@ -113,6 +114,8 @@ nav ul li a:hover {
 .hero-section button:hover {
     background-color: #ff4500;
 }
+
+/* About Section */
 #about {
     padding: 50px;
     background-color: var(--secondary-color);
@@ -127,6 +130,8 @@ nav ul li a:hover {
     font-size: 18px;
     line-height: 1.6;
 }
+
+/* Categories / Blog Grid */
 #categories {
     padding: 50px;
     background-color: var(--secondary-color);
@@ -137,61 +142,68 @@ nav ul li a:hover {
     margin-bottom: 20px;
     text-align: center;
 }
-
 .grid-container {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
- gap: 20px;
- padding: 20px;
-}
-.category-card {
- background-color: white;
- border-radius: 5px;
- box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
- overflow: hidden;
- text-align: center;
-}
-.category-card img {
- width: 100%;
- height: auto;
-}
-.category-card img:hover {
- transform: scale(1.05);
- transition: transform 0.3s ease;
-}
-.category-card h3 {
- font-size: 20px;
- margin: 15px 0;
-}
-.category-card span {
- font-size: 14px;
- font-weight: bold;
- color: var(--accent-color);
- margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-.category-card p {
- font-size: 14px;
- padding: 0 15px 15px;
- font-family:Arial, Helvetica, sans-serif;
+/* Category / Blog Card */
+.category-card, .blog-card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
-.grid-container button {
- margin-bottom: 15px;
- padding: 10px 20px;
- background-color: var(--accent-color);
- color: white;
- border: none;
- border-radius: 5px;
- cursor: pointer;
- font-size: 16px;
+.image-wrapper {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-height: 350px;
 }
-.grid-container button:hover {
- background-color: #ff4500;
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+     
+}
+.image-wrapper img:hover {
+    transform: scale(1.05);
+}
+.category-card h3, .blog-card h3 {
+    font-size: 20px;
+    margin: 15px 0 5px;
+}
+.category-card p, .blog-card p {
+    font-size: 14px;
+    padding: 0 15px 10px;
+    color: #555;
+    flex-grow: 1;
+}
+.category-card button, .blog-card button {
+    margin: 10px 0 15px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+.category-card button:hover, .blog-card button:hover {
+    background-color: #ff4500;
 }
 
+/* Contact Section */
 #contact {
     display: flex;
-    background-color:var(--accent-color);
+    background-color: var(--accent-color);
     color: var(--primary-color);
     text-align: center;
     justify-content: space-evenly;
@@ -199,12 +211,11 @@ nav ul li a:hover {
 #contact div {
     padding: 20px;
 }
-
-.company  p{
+.company p {
     font-size: 30px;
     margin-bottom: 20px;
     font-weight: bold;
-    color:var(--secondary-color);
+    color: var(--secondary-color);
 }
 .company ul {
     list-style: none;
@@ -221,17 +232,19 @@ nav ul li a:hover {
 .company ul li a:hover {
     text-decoration: underline;
 }
+
+/* Footer */
 footer {
     background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: 10px;
 }
-
 footer p {
     font-size: 14px;
 }
 
+/* Food Details / Blog Detail */
 .food-details-main-section {
     padding: 50px;
     background-color: var(--secondary-color);
@@ -247,7 +260,6 @@ footer p {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
-
 .food-details-main-section p {
     font-size: 18px;
     line-height: 1.6;
@@ -265,13 +277,67 @@ footer p {
     max-width: 500px;
     margin: 20px auto;
 }
-
 .food-image img {
     width: 100%;
     height: auto;
     margin-top: 20px;
 }
-.food-image :hover {
+.food-image img:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
+}
+
+/* Blog Detail Page */
+.blog-detail-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 16px;
+    font-family: Arial, sans-serif;
+}
+.back-btn {
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+.back-btn:hover {
+    background-color: #ff4500;
+}
+.blog-detail-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+}
+.blog-detail-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+.blog-detail-title {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+.blog-detail-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+.blog-ingredients {
+    list-style: disc;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 16px;
+    color: #333;
+    font-size: 0.95rem;
 }

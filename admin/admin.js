@@ -9,14 +9,15 @@ form.addEventListener("submit", async (e) => {
     title: document.getElementById("foodTitle").value,
     image: document.getElementById("foodImage").value,
     description: document.getElementById("foodDescription").value,
-    ingredients: document.getElementById("foodIngredients").value.split(","),
-    instructions: document.getElementById("foodInstructions").value.split(",")
+    ingredients: document.getElementById("foodIngredients").value,
+    instructions: document.getElementById("foodInstructions").value,
+    author: document.getElementById("foodAuthorInput").value,
   };
 
   console.log("Sending to PocketBase:", data); // 👈 DEBUG
 
   try {
-    const record = await pb.collection('pbc_2106002237').create(data);
+    const record = await pb.collection('famousblog').create(data); 
     
     console.log("SUCCESS:", record); // 👈 DEBUG
     alert("✅ Food added to database!");

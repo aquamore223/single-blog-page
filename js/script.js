@@ -1,21 +1,40 @@
-const grid = document.getElementById("foodGrid");
+import PocketBase from 'https://cdn.jsdelivr.net/npm/pocketbase@latest/dist/pocketbase.es.mjs';
 
-foods.forEach(food => {
-  const card = document.createElement("div");
-  card.className = "grid-card";
+const pb = new PocketBase('https://itrain.services.hodessy.com');
 
-  card.innerHTML = `
-    <div class="category-card">
-      <img src="${food.image}" alt="${food.title}">
-      <span>${food.author}</span> <span>${food.createdAt}</span>
-      <h3>${food.title}</h3>
-      <p>${food.description}</p>
-    </div>
-    <a href="food-details.html?id=${food.id}">
-      <button>Read More</button>
-    </a>
-  `;
+async function loadBlogs() {
+    try {
+        const result = await pb.collection('famousblog').getList(1, 20);
+        const container = document.getElementById("foodGrid");
+        if (!container) return console.error("Container #foodGrid not found");
 
-  grid.appendChild(card);
-});
+        let html = "";
 
+        result.items.forEach(blog => {
+            const imageUrl = blog.image || 'https://via.placeholder.com/300x200?text=No+Image';
+            const author = blog.author || "Unknown";
+            const date = blog.created ? new Date(blog.created).toLocaleDateString() : "";
+
+            html += `
+                <div class="category-card blog-card">
+                    <div class="image-wrapper">
+                        <img src="${imageUrl}" alt="${blog.title}">
+                    </div>
+                    <h3>${blog.title}</h3>
+                    <p>${blog.description || ''}</p>
+                    <p class="blog-meta"><strong>${author}</strong> | <small>${date}</small></p>
+                    <a href="food-details.html?id=${blog.id}">
+                        <button>View Details</button>
+                    </a>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+
+    } catch (error) {
+        console.error("Error loading blogs:", error);
+    }
+}
+
+loadBlogs();
