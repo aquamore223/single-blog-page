@@ -1,22 +1,24 @@
-/* Reset & Base */
-*{
+/* ----------------------- RESET & BASE ----------------------- */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     width: 100%;
 }
+
 :root {
     --primary-color: #130e0e;
     --secondary-color: #f4f4f4;
     --accent-color: #ff6347;
 }
 
-/* Header */
+/* ----------------------- HEADER ----------------------- */
 header {
     color: var(--primary-color);
     padding: 20px;
@@ -30,6 +32,7 @@ header {
     z-index: 1000;
     background-color: #f4f4f4;
 }
+
 header h5 {
     font-size: 23px;
     font-weight: bold;
@@ -40,36 +43,46 @@ header h5 {
 header h5 span {
     color: var(--accent-color);
 }
+
 nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
+
 nav ul li a {
     text-decoration: none;
     color: var(--primary-color);
     font-weight: bold;
     transition: color 0.3s ease;
 }
+
 nav ul li a:hover {
     color: var(--accent-color);
 }
+
+/* ----------------------- SEARCH BAR ----------------------- */
 .search-bar {
     display: flex;
     align-items: center;
     border-radius: 5px;
     gap: 5px;
 }
-.search-bar:hover {
-    border-color: var(--accent-color);
-}
 .search-bar input {
     padding: 5px 10px;
-    border:none;
+    border: none;
     border-radius: 4px;
 }
 
-/* Hero Section */
+/* ----------------------- HAMBURGER ----------------------- */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* ----------------------- HERO SECTION ----------------------- */
 .hero-section {
     background-image: url('../images/hero.jpg');
     background-size: cover;
@@ -79,7 +92,7 @@ nav ul li a:hover {
     text-align: center;
     width: 100%;
     padding: 100px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 .hero-section img {
     width: 100%;
@@ -107,15 +120,11 @@ nav ul li a:hover {
     cursor: pointer;
     font-size: 16px;
 }
-.hero-section button a {
-    color: white;
-    text-decoration: none;
-}
 .hero-section button:hover {
     background-color: #ff4500;
 }
 
-/* About Section */
+/* ----------------------- ABOUT ----------------------- */
 #about {
     padding: 50px;
     background-color: var(--secondary-color);
@@ -131,7 +140,7 @@ nav ul li a:hover {
     line-height: 1.6;
 }
 
-/* Categories / Blog Grid */
+/* ----------------------- CATEGORIES / BLOG GRID ----------------------- */
 #categories {
     padding: 50px;
     background-color: var(--secondary-color);
@@ -149,16 +158,17 @@ nav ul li a:hover {
     padding: 20px;
 }
 
-/* Category / Blog Card */
+/* ----------------------- BLOG CARD ----------------------- */
 .category-card, .blog-card {
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     overflow: hidden;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
+
 .image-wrapper {
     width: 100%;
     height: auto;
@@ -170,11 +180,11 @@ nav ul li a:hover {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-     
 }
 .image-wrapper img:hover {
     transform: scale(1.05);
 }
+
 .category-card h3, .blog-card h3 {
     font-size: 20px;
     margin: 15px 0 5px;
@@ -200,13 +210,14 @@ nav ul li a:hover {
     background-color: #ff4500;
 }
 
-/* Contact Section */
+/* ----------------------- CONTACT ----------------------- */
 #contact {
     display: flex;
     background-color: var(--accent-color);
     color: var(--primary-color);
     text-align: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 #contact div {
     padding: 20px;
@@ -233,7 +244,7 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Footer */
+/* ----------------------- FOOTER ----------------------- */
 footer {
     background-color: var(--primary-color);
     color: white;
@@ -244,7 +255,7 @@ footer p {
     font-size: 14px;
 }
 
-/* Food Details / Blog Detail */
+/* ----------------------- FOOD DETAILS ----------------------- */
 .food-details-main-section {
     padding: 50px;
     background-color: var(--secondary-color);
@@ -255,7 +266,7 @@ footer p {
     margin-bottom: 20px;
     text-align: center;
 }
-.first-section{
+.first-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -287,57 +298,46 @@ footer p {
     transition: transform 0.3s ease;
 }
 
-/* Blog Detail Page */
-.blog-detail-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 16px;
-    font-family: Arial, sans-serif;
+/* ----------------------- RESPONSIVE ----------------------- */
+@media (max-width: 1024px) {
+    .first-section {
+        grid-template-columns: 1fr;
+    }
 }
-.back-btn {
-    display: inline-block;
-    margin-bottom: 24px;
-    padding: 8px 16px;
-    background-color: var(--accent-color);
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-}
-.back-btn:hover {
-    background-color: #ff4500;
-}
-.blog-detail-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 24px;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    text-align: center;
-}
-.blog-detail-image {
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 16px;
-}
-.blog-detail-title {
-    font-size: 2rem;
-    margin-bottom: 16px;
-}
-.blog-detail-description {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 16px;
-    line-height: 1.5;
-}
-.blog-ingredients {
-    list-style: disc;
-    text-align: left;
-    padding-left: 20px;
-    margin-top: 16px;
-    color: #333;
-    font-size: 0.95rem;
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        width: 100%;
+        display: none;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 10px 0;
+        border-top: 1px solid #ddd;
+    }
+
+    nav ul li {
+        padding: 10px 0;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* HIDE SEARCH ON MOBILE */
+    .search-bar {
+        display: none;
+    }
 }

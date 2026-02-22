@@ -2,6 +2,7 @@ import PocketBase from 'https://cdn.jsdelivr.net/npm/pocketbase@latest/dist/pock
 
 const pb = new PocketBase('https://itrain.services.hodessy.com');
 
+
 async function loadBlogs() {
     try {
         const result = await pb.collection('famousblog').getList(1, 20);
@@ -38,3 +39,12 @@ async function loadBlogs() {
 }
 
 loadBlogs();
+
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
+}
