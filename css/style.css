@@ -341,3 +341,39 @@ footer p {
         display: none;
     }
 }
+/* MOBILE NAV FIX */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    header {
+        padding:0;
+        margin:0;
+    }
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Hide nav by default */
+    nav {
+        display: none;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 20px 0;
+    }
+
+    /* Show nav when active */
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
