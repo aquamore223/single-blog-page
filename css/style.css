@@ -395,3 +395,26 @@ footer p {
     }
        
 }
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background: #ff6347;
+    color: #fff;
+}
+
+.active-page {
+    background: #ff6347;
+    color: white;
+}

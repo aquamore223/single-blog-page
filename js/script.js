@@ -1,5 +1,9 @@
+
 import PocketBase from 'https://cdn.jsdelivr.net/npm/pocketbase@latest/dist/pocketbase.es.mjs';
 const pb = new PocketBase('https://itrain.services.hodessy.com');
+
+let currentPage = 1;
+const perPage = 6;
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -33,17 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
   loadBlogs();
 });
 
-async function loadBlogs() {
+async function loadBlogs(page = 1) {
     try {
-        const result = await pb.collection('famousblog').getList(1, 20);
+        const result = await pb.collection('famousblog').getList(page, perPage);
+
         const container = document.getElementById("foodGrid");
-        if (!container) return console.error("Container #foodGrid not found");
+        if (!container) return;
 
         let html = "";
+
         result.items.forEach(blog => {
             const imageUrl = blog.image || 'https://via.placeholder.com/300x200?text=No+Image';
-            const author = blog.author || "Unknown";
-            const date = blog.created ? new Date(blog.created).toLocaleDateString() : "";
 
             html += `
                 <div class="category-card blog-card">
@@ -52,7 +56,6 @@ async function loadBlogs() {
                     </div>
                     <h3>${blog.title}</h3>
                     <p>${blog.description || ''}</p>
-                    <p class="blog-meta"><strong>${author}</strong> | <small>${date}</small></p>
                     <a href="food-details.html?id=${blog.id}">
                         <button>View Details</button>
                     </a>
@@ -62,10 +65,48 @@ async function loadBlogs() {
 
         container.innerHTML = html;
 
+        // 🔥 Update pagination buttons
+        renderPagination(result.page, result.totalPages);
+
     } catch (error) {
         console.error("Error loading blogs:", error);
     }
 }
+
+function renderPagination(current, total) {
+    const pagination = document.getElementById("pagination");
+    if (!pagination) return;
+
+    let html = "";
+
+    // Previous button
+    if (current > 1) {
+        html += `<button onclick="changePage(${current - 1})">Prev</button>`;
+    }
+
+    // Page numbers
+    for (let i = 1; i <= total; i++) {
+        html += `
+            <button onclick="changePage(${i})"
+                class="${i === current ? 'active-page' : ''}">
+                ${i}
+            </button>
+        `;
+    }
+
+    // Next button
+    if (current < total) {
+        html += `<button onclick="changePage(${current + 1})">Next</button>`;
+    }
+
+    pagination.innerHTML = html;
+}
+  function changePage(page) {
+    currentPage = page;
+    loadBlogs(currentPage);
+}
+
+window.changePage = changePage;
 
 // Search function
 function attachSearchListeners() {
