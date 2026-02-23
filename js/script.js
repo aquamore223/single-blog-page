@@ -1,7 +1,37 @@
 import PocketBase from 'https://cdn.jsdelivr.net/npm/pocketbase@latest/dist/pocketbase.es.mjs';
-
 const pb = new PocketBase('https://itrain.services.hodessy.com');
 
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Load header dynamically
+  fetch("header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("header").innerHTML = data;
+
+      // Attach hamburger listener
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+      if(menuToggle && navMenu){
+          menuToggle.addEventListener("click", () => {
+              navMenu.classList.toggle("active");
+          });
+      }
+
+      // Attach search listeners
+      attachSearchListeners();
+    });
+
+  // Load footer dynamically
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    });
+
+  // Load blogs
+  loadBlogs();
+});
 
 async function loadBlogs() {
     try {
@@ -10,7 +40,6 @@ async function loadBlogs() {
         if (!container) return console.error("Container #foodGrid not found");
 
         let html = "";
-
         result.items.forEach(blog => {
             const imageUrl = blog.image || 'https://via.placeholder.com/300x200?text=No+Image';
             const author = blog.author || "Unknown";
@@ -38,13 +67,33 @@ async function loadBlogs() {
     }
 }
 
-loadBlogs();
+// Search function
+function attachSearchListeners() {
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    if(!searchInput || !searchBtn) return;
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+    async function searchFood() {
+        const query = searchInput.value.toLowerCase().trim();
+        if (!query) return alert("Type something to search");
 
-if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
+        try {
+            const result = await pb.collection("famousblog").getList(1, 50);
+            const match = result.items.find(food =>
+                food.title.toLowerCase().includes(query)
+            );
+            if (match) {
+                window.location.href = `food-details.html?id=${match.id}`;
+            } else {
+                alert("Food not found 😢");
+            }
+        } catch (err) {
+            console.error("Search error:", err);
+        }
+    }
+
+    searchBtn.addEventListener("click", searchFood);
+    searchInput.addEventListener("keypress", e => {
+        if(e.key === "Enter") searchFood();
     });
 }
