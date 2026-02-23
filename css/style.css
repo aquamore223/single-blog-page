@@ -322,7 +322,6 @@ footer p {
     transition: transform 0.3s ease;
 }
 
-/* ----------------------- RESPONSIVE ----------------------- */
 @media (max-width: 1024px) {
     .first-section {
         grid-template-columns: 1fr;

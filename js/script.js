@@ -85,7 +85,7 @@ function attachSearchListeners() {
             if (match) {
                 window.location.href = `food-details.html?id=${match.id}`;
             } else {
-                alert("Food not found 😢");
+                alert("Food not found go to category page to view all foods");
             }
         } catch (err) {
             console.error("Search error:", err);
