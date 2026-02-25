@@ -38,14 +38,14 @@ header {
     background-color: #f4f4f4;
 }
 
-header h5 {
+header h1 {
     font-size: 23px;
     font-weight: bold;
     font-style: italic;
     font-family: poppins;
     text-transform: uppercase;
 }
-header h5 span {
+header h1 span {
     color: var(--accent-color);
 }
 
@@ -79,6 +79,10 @@ nav ul li a:hover {
     align-items: center;
     border-radius: 5px;
     gap: 5px;
+}
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
 }
 .search-bar input {
     padding: 5px 10px;
@@ -341,11 +345,15 @@ footer p {
 }
 
 @media (max-width: 768px) {
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .menu-toggle {
         display: block;
-        top: 0;
-        right: 10px;
-        position: absolute;
+        position: static; 
     }
  nav {
         display: none;
@@ -358,10 +366,14 @@ footer p {
         left: 0;
         padding: 10px 0;
         border-top: 1px solid #ddd;
+               
     }
 
     nav.active {
         display: flex;
+        
+
+
     }
 
     nav ul {
@@ -375,10 +387,7 @@ footer p {
         display: flex; 
     }
 
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    
      .hero-section {
         padding: 40px 20px; 
     }

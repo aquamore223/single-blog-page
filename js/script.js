@@ -31,6 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.text())
     .then(data => {
       document.getElementById("footer").innerHTML = data;
+      const yearElement = document.getElementById("year");
+
+        if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+        }
     });
 
   // Load blogs
@@ -138,3 +143,4 @@ function attachSearchListeners() {
         if(e.key === "Enter") searchFood();
     });
 }
+
