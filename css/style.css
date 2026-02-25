@@ -10,6 +10,11 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     width: 100%;
+    overflow-x: hidden;
+}
+img {
+    max-width: 100%;
+    display: block;
 }
 
 :root {
@@ -367,12 +372,15 @@ footer p {
 
     /* Hide search on small screens if desired */
     .search-bar {
-        display: flex; /* you can set to none if you want hidden */
+        display: flex; 
     }
 
     header {
         flex-direction: column;
         align-items: flex-start;
+    }
+     .hero-section {
+        padding: 40px 20px; 
     }
     .company ul {
     list-style: none;

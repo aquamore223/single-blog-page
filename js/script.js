@@ -52,7 +52,7 @@ async function loadBlogs(page = 1) {
             html += `
                 <div class="category-card blog-card">
                     <div class="image-wrapper">
-                        <img src="${imageUrl}" alt="${blog.title}">
+                        <img src="${imageUrl}" alt="${blog.title}"  loading="lazy">
                     </div>
                     <h3>${blog.title}</h3>
                     <p>${blog.description || ''}</p>
